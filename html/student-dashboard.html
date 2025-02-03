@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student-dashboard</Student-dashboard></title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="bootstap.min.css" rel="Stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body style="background-color: #E6E3E3; ">
+    <nav style="display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px; color: black; text-align: center; background-color: #5A3E94; position: relative; width: 100%;">
+        <a href="../index.html">
+            <div id="logo" style="height: 60px; width: 60px;">
+            <img src="./logo.png" alt="Logo">
+        </div>
+        </a>
+        <ul class="links" style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 20px; font-weight: bold; margin: 0; margin-left: auto;">
+            <li><a href="./">About Us</a></li>
+            <li><button type="button" class="btn btn-outline-dark" style="border: 1px solid white; color: white;">LogOut</button></li>
+        </ul>
+    </nav>
+
+    <div style="flex: 1;  display: flex; flex-direction: row; align-items: center; align-content: center; justify-content: center;   padding: 20px; gap: 20px; margin: 60px 0px;">
+        <a href="./student-attendance.html">
+            <div id="card" style="background-color: #644BA64F; display: flex; flex-direction: column; border-radius: 12px; box-shadow: 10px 10px 12px #767676; margin: 50px; height: auto; width: 320px;">
+                <img style="padding: 40px 50px;" src="./Attendance.png"/>
+                <div style="color: black; font-weight: bolder; background-color: #E6E3E3; margin-bottom: 0px; height: auto; display: flex; justify-content: center; height: 60px; text-align: center; align-items: center; font-size: 30px; border-radius: 12px;">View Attendance</div>
+            </div>
+        </a>
+        
+        <a href="./student-assignment.html">
+            <div style="background-color: #644BA64F; display: flex; flex-direction: column; border-radius: 12px; box-shadow: 10px 10px 12px #767676; margin: 50px; height: auto; width: 320px;">
+                <img style="padding: 40px 50px;" src="./Assignment.png"/>
+                <div style="color: black; font-weight: bolder; background-color: #E6E3E3; margin-bottom: 0px; height: auto; display: flex; justify-content: center; height: 60px; text-align: center; align-items: center; font-size: 30px; border-radius: 12px;">View Assignment</div>
+            </div>
+        </a>
+    </div>
+
+    <div class="footer" style="background-color: black; color: white; display: flex; justify-content: space-between; margin: 0; position: relative; bottom: 0; width: 100%; padding: 10px;">
+        <div>@2024 Learnhub Inc, All rights reserved</div>
+        <div>
+            <ul class="social-links" style="display: flex; gap: 10px; list-style-type: none;">
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#facebook"><img src="./icons/facebook.png" alt="Facebook"></a></li>
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#instagram"><img src="./icons/instagram.png" alt="Instagram"></a></li>
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#linkedin"><img src="./icons/linkedIn.png" alt="LinkedIn"></a></li>
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#twitter"><img src="./icons/twitter.png" alt="Twitter"></a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>

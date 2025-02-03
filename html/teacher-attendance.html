@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher-attendance</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="bootstap.min.css">
+</head>
+
+<body style="background-color: #E6E3E3; min-height: 100vh; ">
+    <nav style="display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px; color: black; text-align: center; background-color: #5A3E94; position: relative; width: 100%;">
+        <a href="../index.html">
+          <div id="logo" style="height: 60px; width: 60px;">
+            <img src="./logo.png" alt="Logo">
+        </div>
+        </a>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./teacher-dashboard.html">Teacher-Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="./teacher-attendance-dashboard.html">Teacher-Attendance-Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Teacher-Attendance</Student-Attendance></li>
+            </ol>
+        </nav>
+
+        <ul class="links" style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 20px; font-weight: bold; margin: 0; margin-left: auto;">
+            <li><a href="./">About Us</a></li>
+            <li><button type="button" class="btn btn-outline-dark" style="border: 1px solid white; color: white;">LogOut</button></li>
+        </ul>
+    </nav>
+
+    <div class="body" style="min-height: 100vh; background: #E6E3E3;" class="grid place-content-center h-screen">
+      <table style="border-collapse: separate; border-spacing: 4px; border: 2px solid gray; width: 100%; text-align: left;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th style="border: 1px solid #4b5563; padding: 8px;">ID</th>
+                <th style="border: 1px solid #4b5563; padding: 8px;">Name</th>
+                <th style="border: 1px solid #4b5563; padding: 8px;">Attendance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="border: 1px solid #4b5563; padding: 8px;">01</td>
+                <td style="border: 1px solid #4b5563; padding: 8px;">Indianapolis</td>
+                <td style="border: 1px solid #4b5563; padding: 8px;">89%</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #4b5563; padding: 8px;">02</td>
+                <td style="border: 1px solid #4b5563; padding: 8px;">Columbus</td>
+                <td style="border: 1px solid #4b5563; padding: 8px;">91%</td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #4b5563; padding: 8px;">03</td>
+                <td style="border: 1px solid #4b5563; padding: 8px;">Detroit</td>
+                <td style="border: 1px solid #4b5563; padding: 8px;">67%</td>
+            </tr>
+        </tbody>
+     </table>
+    </div>
+
+    <div class="footer" style="background-color: black; color: white; display: flex; justify-content: space-between; margin: 0; position: relative; bottom: 0; width: 100%; padding: 10px;">
+        <div>@2024 Learnhub Inc, All rights reserved</div>
+        <div>
+            <ul class="social-links" style="display: flex; gap: 10px; list-style-type: none;">
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#facebook"><img src="./icons/facebook.png" alt="Facebook"></a></li>
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#instagram"><img src="./icons/instagram.png" alt="Instagram"></a></li>
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#linkedin"><img src="./icons/linkedIn.png" alt="LinkedIn"></a></li>
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#twitter"><img src="./icons/twitter.png" alt="Twitter"></a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup-page</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="bootstap.min.css" rel="Stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body style="background-color: #E6E3E3;">
+    <nav style="display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px; color: black; text-align: center; background-color: #5A3E94; position: relative; width: 100%;">
+        <div id="logo" style="height: 60px; width: 60px;">
+            <a href="LearnHub\index.html"><img src="./logo.png" alt="Logo"></a>
+        </div>
+        <ul class="links" style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 20px; font-weight: bold; margin: 0; margin-left: auto;">
+            <li><a href="./">About Us</a></li>
+            <li><a href="./login.html"><button type="button" class="btn btn-outline-dark" style="border: 1px solid white; color: white;">Login</button></a></li>
+        </ul>
+    </nav>
+
+    <div style="flex: 1; background-color: #644BA64F; display: flex; flex-direction: column; align-items: center; align-content: center; justify-content: center; border-radius: 12px; box-shadow: 10px 10px 12px #767676; margin-top: 100px; margin-right: 580px; margin-left: 580px; margin-bottom: 100px; padding: 20px; width: 320 px; height: auto;">
+        <h3 style="font-weight: bold;">SignUp</h3>
+        <div style="display: flex; flex-direction: row; gap: 20px; margin-left: 0%;">
+            <p>or</p>
+            <a  style="color: #11D111; text-decoration: underline;" href="./login.html">already have an account</a>
+        </div>
+        <form>
+            <select class="form-select" aria-label="Default select example" name="user-role" style="background-color: azure; color: black; padding: 15px; margin: 8px; border-radius: 6px; font-weight: bold;">
+                <option selected>Select your user-role</option>
+                <option value="Student">Student</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Admin">Admin</option>
+            </select>
+            <input style="background-color: azure; color: black; padding: 15px; margin: 8px; border-radius: 6px; font-weight: bold;" type="text" name="name" placeholder="Name" required/>
+            <input style="background-color: azure; color: black; padding: 15px; margin: 8px; border-radius: 6px; font-weight: bold;" type="number" name="Phone-number" placeholder="Phone Number" required/>
+            <input style="background-color: azure; color: black; padding: 15px; margin: 8px; border-radius: 6px; font-weight: bold;" type="email" name="Email" placeholder="Email" required/>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <input style="background-color: azure; color: black; padding: 15px; margin: 8px; border-radius: 6px; font-weight: bold;" type="password" name="password" placeholder="Password" required/>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    Remember me
+                </label>
+            </div>
+            <button type="submit" style="background-color: #007AFF; border-radius: 20px;" class="btn btn-primary">SignUp</button>
+        </form>
+    </div>
+
+    <div class="footer" style="background-color: black; color: white; display: flex; justify-content: space-between; margin: 0; position: relative; bottom: 0; width: 100%; padding: 10px;">
+        <div>@2024 Learnhub Inc, All rights reserved</div>
+        <div>
+            <ul class="social-links" style="display: flex; gap: 10px; list-style-type: none;">
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#facebook"><img src="./icons/facebook.png" alt="Facebook"></a></li>
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#instagram"><img src="./icons/instagram.png" alt="Instagram"></a></li>
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#linkedin"><img src="./icons/linkedIn.png" alt="LinkedIn"></a></li>
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#twitter"><img src="./icons/twitter.png" alt="Twitter"></a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>

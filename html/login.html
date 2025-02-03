@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login-page</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="bootstap.min.css" rel="Stylesheet"/>
+    
+</head>
+<body style="background: var(#E6E3E3); min-height:100vh;">
+    <nav style="display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px; color: black; text-align: center; background-color: #5A3E94; position: relative; min-width: 100vh;">
+        <div id="logo" style="height: 60px; width: 60px;">
+            <a href="../index.html"><img src="./logo.png" alt="Logo"></a>
+        </div>
+        <ul class="links" style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 20px; font-weight: bold; margin: 0; margin-left: auto;">
+            <li><a href="./">About Us</a></li>
+        </ul>
+    </nav>
+
+    <div style="flex: 1; background-color: #644BA64F;  display: flex; flex-direction: column; align-items: center; align-content: center; justify-content: center; border-radius: 12px; box-shadow: 10px 10px 12px #767676; margin-top: 100px; margin-right: 580px; margin-left: 580px; margin-bottom: 100px; padding: 20px; width: 320 px; height: auto; ">
+        <h3 style="font-weight: bold;">Login</h3>
+        <form id="login-form" style="display: flex; flex-direction: column; justify-content: center;">
+            <input id="email" style="background-color: azure; color: black; padding: 15px; margin: 8px; border-radius: 6px; font-weight: bold;" type="text" name="UserId" placeholder="UserId" required/>
+            <input id="password" style="background-color: azure; color: black; padding: 15px; margin: 8px; border-radius: 6px; font-weight: bold;" type="password" name="password" placeholder="Password" required/>
+            <div style="display: flex; justify-content: space-between;">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      Remember me
+                    </label>
+                </div>
+                <a href="">Forgot password</a>
+            </div>
+            <button type="submit" style="background-color: #007AFF; border-radius: 20px;" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+    
+    <div class="footer" style="background-color: black; color: white; display: flex; justify-content: space-between; margin: 0; position: relative; bottom: 0; width: 100%; padding: 10px;">
+        <div>@2024 Learnhub Inc, All rights reserved</div>
+        <div>
+            <ul class="social-links" style="display: flex; gap: 10px; list-style-type: none;">
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#facebook"><img src="./icons/facebook.png" alt="Facebook"></a></li>
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#instagram"><img src="./icons/instagram.png" alt="Instagram"></a></li>
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#linkedin"><img src="./icons/linkedIn.png" alt="LinkedIn"></a></li>
+                <li style="cursor: pointer; height: 40px; width: 40px;"><a href="#twitter"><img src="./icons/twitter.png" alt="Twitter"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="message"></div>
+    <script  type="module" src="./js/index.js"></script>
+</body>
+</html>
