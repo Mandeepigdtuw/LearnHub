@@ -23,6 +23,31 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db =  getFirestore(app);
 
+var stdNo = 0;
+var tbody = document.getElementById('tbody1');
+function AddItemToTable(Name,Mobile){
+    let trow = document.createElement("trow");
+    let td1 = document.createElement("td");
+    let td2 = document.createElement("td");
+
+    td1.innerHTML = Name;
+    td2.innerHTML = Mobile;
+
+    trow.appendChild(td1);
+    trow.appendChild(td2);
+
+    tbody.appendChild(trow);
+
+}
+
+function AddAllItemsToTable(TheStudent) {
+    tbody.innerHTML="";
+    TheStudent.forEach(element => {
+        AddItemToTable(element.Name, element.Mobile);
+    });
+}
+
+
 async function GetAllDataOnce() {
     const querySnapshot = await getDocs(collection(db,"12A"));
     var students = [];
@@ -33,4 +58,16 @@ async function GetAllDataOnce() {
     AddAllItemsToTable(students);    
 }
 
-window.onload = GetAllDataOnce;
+async function GetAllDataOnceRealtime(){
+    const dbRef = collection(db,"12A");
+    onSnapshot(dbRef,(querySnapshot)=>{
+        var students = [];
+
+        querySnapshot.forEach(doc => {
+            students.push(doc.data());
+        });
+        AddAllItemsToTable(students);
+    })
+}
+
+window.onload = GetAllDataOnceRealtime;

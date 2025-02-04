@@ -2,6 +2,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 import { getFirestore, getDoc, doc , collection } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-storage.js";
+
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -19,9 +21,10 @@ const firebaseConfig = {
     measurementId: "G-PTRD7GJTP3"
 };
 
-firebaseConfig.initializeApp(firebaseConfig);
-const storage = firebase.storage();
-const db = firebase.firestore();
+const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
+const db = getFirestore(app);
+
 
 //Function to upload pdf file
 function uploadFile(){
@@ -29,7 +32,7 @@ function uploadFile(){
     const folder = document.getElementById("upload-folder").value;
     const uploadStatus = document.getElementById("uploadStatus");
 
-    if (!fileInput.isDefaultNamespace.length){
+    if (!fileInput.files.length){
         alert("Please select a PDF File.");
         return;
     }
@@ -42,7 +45,9 @@ function uploadFile(){
         return;
     }
 
-    const storageRef = storage.ref('${folder}/${file.name}');
+   
+    const storageRef = ref(storage, `${folder}/${file.name}`);
+
 
     //Upload File
     storageRef.put(file).then(snapshot => {
@@ -65,6 +70,63 @@ function uploadFile(){
         console.error("Error uploading file:", error);
     });
 }
+
+function popUp(message , callback){
+    console.log("Popup function is triggered!");
+    var confirmBox = document.createElement("div");
+    confirmBox.classList.add("confirm-box"); //This is the class for Styling of confirm box
+
+    var messageBox = document.createElement("div"); //Message box is inside confirm box
+    messageBox.classList.add("message-box");
+    messageBox.textContent = message;
+    confirmBox.appendChild(messageBox);
+
+    var buttonBox = document.createElement("div"); //Message box is inside confirm box
+    buttonBox.classList.add("button-box");
+    messageBox.appendChild(buttonBox);
+
+    document.body.appendChild(confirmBox);
+
+    var yesButton = document.createElement("button"); //Message box is inside confirm box
+    yesButton.classList.add("yes-button");
+    yesButton.textContent = "Yes";
+    buttonBox.appendChild(yesButton);
+    yesButton.addEventListener('click', YesButtonClick);
+
+    var noButton = document.createElement("button"); //Message box is inside confirm box
+    noButton.classList.add("no-button");
+    noButton.textContent = "No";
+    buttonBox.appendChild(noButton);
+    noButton.addEventListener('click', NoButtonClick);
+
+   function removePopUp(){
+    document.body.removeChild(confirmBox);
+   }
+
+    function YesButtonClick(){
+        callback(true);
+        uploadFile();
+        removePopUp();
+    }
+
+    function NoButtonClick(){
+        callback(false);
+        removePopUp();
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector("#openpopup").addEventListener("click", () => {
+        popUp("Are you sure you want to Upload?", function(result) {
+            if(result) {
+                console.log("YES");
+            } else {
+                console.log("NO");
+            }
+        });
+    });
+});
 
 //Function to fetch files from Firestore
 function fetchFiles(){
