@@ -2,6 +2,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 import { getFirestore, getDoc, doc , collection , onSnapshot } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+import { deleteDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+import { updateDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -44,11 +47,11 @@ function AddItemToDiv(Name, Mobile, docId) {
     let textDiv = document.createElement("div");
     let namePara = document.createElement("p");
     namePara.classList.add("font-bold", "text-lg");
-    namePara.innerText = Name;
+    namePara.innerText = "Name: " + Name;
 
     let mobilePara = document.createElement("p");
     mobilePara.classList.add("text-gray-600", "text-sm");
-    mobilePara.innerText = Mobile;
+    mobilePara.innerText = "Mobile: " +  Mobile;
 
     textDiv.appendChild(namePara);
     textDiv.appendChild(mobilePara);
@@ -56,15 +59,29 @@ function AddItemToDiv(Name, Mobile, docId) {
     leftSection.appendChild(img);
     leftSection.appendChild(textDiv);
 
+    //Create the right section
+    let rightSection = document.createElement("div");
+    rightSection.classList.add("flex","gap-2");
+
     // Create the remove button
     let removeButton = document.createElement("button");
     removeButton.classList.add("bg-blue-500", "text-white", "px-4", "py-2", "rounded-md", "hover:bg-red-700");
     removeButton.innerText = "Remove";
 
+    //Create Update button
+    let updateButton = document.createElement("button");
+    updateButton.classList.add("bg-[#5A3E94]", "text-white", "px-4", "py-2", "rounded-md", "hover:bg-red-700");
+    updateButton.innerText = "Update";
+
+    rightSection.appendChild(updateButton);
+    rightSection.appendChild(removeButton);
+
     // Add click event to delete student from Firebase
     removeButton.addEventListener("click", async function () {
         if (confirm(`Are you sure you want to remove ${Name}?`)) {
             try {
+                console.log("Attempting to delete doc with ID:", docId);
+
                 await deleteDoc(doc(db, "12A", docId)); // Delete from Firestore
                 studentDiv.remove(); // Remove from UI
                 alert(`${Name} has been removed successfully!`);
@@ -75,9 +92,33 @@ function AddItemToDiv(Name, Mobile, docId) {
         }
     });
 
+    // Add click event to update student from Firebase
+    updateButton.addEventListener("click", async function () {
+        let newName = prompt(`Enter new name for ${Name}:`, Name);  //This name and mobile will overwrite the old value
+        let newMobile = prompt(`Enter new mobile number for ${Name}:`, Mobile);
+
+        if (newName && newMobile) {
+            try {
+                console.log("Attempting to update doc with ID:", docId);
+    
+                await updateDoc(doc(db, "12A", docId), {
+                    Name: newName,
+                    Mobile: newMobile
+                });
+    
+                alert(`${Name} has been updated successfully!`);
+            } catch (error) {
+                console.error("Error updating student:", error);
+                alert("Failed to update student.");
+            }
+        }else{
+            alert("Update canceled. Both fields are required.");
+        }
+    });
+
     // Append sections to the student card
     studentDiv.appendChild(leftSection);
-    studentDiv.appendChild(removeButton);
+    studentDiv.appendChild(rightSection);
 
     // Append the student card to the container
     studentsContainer.appendChild(studentDiv);
