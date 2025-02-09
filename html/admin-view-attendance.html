@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin-assignment</Student-assignment></title>
+    <title>Admin-view-attendance</Teacher-view-attendance></title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link href="bootstap.min.css" rel="Stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -11,16 +11,15 @@
 
 <body style="background-color: #E6E3E3; min-height: 100vh; ">
     <nav style="display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px; color: black; text-align: center; background-color: #5A3E94; position: relative; width: 100%;">
-        <a href="../index.html">
-            <div id="logo" style="height: 60px; width: 60px;">
-                <img src="./logo.png" alt="Logo">
-            </div>
-        </a>
-
+        <div id="logo" style="height: 60px; width: 60px;">
+            <img src="./logo.png" alt="Logo">
+        </div>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./admin-dashboard.html">Admin-Dashboard</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Admin-Assignment</li>
+              <li class="breadcrumb-item"><a href="./admin-attendance-preview.html">Admin-Attendance-Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="./admin-attendance-student.html">Class-Attendance-Dashboard</a></li>
+              <li class="breadcrumb-item active" aria-current="page">View-Attendance</Student-Attendance></li>
             </ol>
         </nav>
 
@@ -30,29 +29,26 @@
         </ul>
     </nav>
 
-    <div class="grid h-screen place-content-center">
-        <div class="rounded-xl shadow-2xl shadow-[#5A3E94]/50 p-6 m-8 min-w-full border-2 border-[#5A3E94] bg-[aliceblue] flex justify-between items-center">
+
+
+    <div style="min-height: 100vh; background: #E6E3E3; display: flex; flex-direction: column; align-items: center;" >
+
+        <div class="rounded-xl shadow-2xl shadow-[#5A3E94]/50 p-2 my-2 w-1/4 border-2 border-[#5A3E94] bg-[aliceblue] flex flex-col justify-between items-center">
+            <div class="font-extrabold font-sans-serif font-stretch-extra-expanded tracking-wider">VIEW ATTENDANCE</div>
+            <div class="flex justify-center gap-4">
+                <label class="font-semibold" for="attendance-date">Select Date:</label>
+                <input class="bg-[#D6CCCC] p-2 font-semibold border-solid rounded-xl border-black" type="date" id="attendance-date">
+            </div>
             <div>
-                <img class="rounded-full h-20 w-20 border-2 border-black" src="./Assignment.png"/>
-            </div>
-    
-            <div class="font-serif text-xl font-black">
-                New Assignment
-            </div>
-    
-            <div class="flex flex-col gap-4">
-                <select class="bg-[#5A3E94] shadow-lg shadow-[#5A3E94]/50 text-white" id="folderSelect">
-                    <option selected>Select Folder to view files :</option>
-                    <option value="folder1">Folder 1</option>
-                    <option value="folder2">Folder 2</option>
-                    <option value="folder3">Folder 3</option>
-                </select>
-                <a onclick="listFiles()" class="btn btn-primary" href="#" role="button">Show Files</a>
-                <a  class="btn btn-primary" href="#" role="button">Delete</a>
-                <ul style="display: none;" id="fileList"></ul>
+                <button class="bg-blue-500 hover:bg-red-500 py-2 px-4 my-2 rounded-lg font-semibold" onclick="fetchAttendance()">Fetch Attendance</button>
             </div>
         </div>
+        <div id="attendance-container">
+            <h3>Attendance Records</h3>
+            <ul id="attendance-list"></ul>
+        </div>
     </div>
+    
 
     <div class="footer" style="background-color: black; color: white; display: flex; justify-content: space-between; margin: 0; position: relative; bottom: 0; width: 100%; padding: 10px;">
         <div>@2024 Learnhub Inc, All rights reserved</div>
@@ -65,5 +61,6 @@
             </ul>
         </div>
     </div>
-    
+    <script  type="module"  src="./js/view-attendance.js"></script>
+    <script type="module" src="./js/attendance-app.js"></script>
 </body>

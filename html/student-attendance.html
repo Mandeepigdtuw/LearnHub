@@ -22,7 +22,7 @@
         </nav>
 
         <ul class="links" style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 20px; font-weight: bold; margin: 0; margin-left: auto;">
-            <li><a href="./">About Us</a></li>
+            <li><a href="./AboutUs.html">About Us</a></li>
             <li><a href="../index.html"><button type="button" class="btn btn-outline-dark" style="border: 1px solid white; color: white;">LogOut</button></a></li>
         </ul>
     </nav>
@@ -30,17 +30,17 @@
 
 
     <div style="min-height: 100vh; background: #E6E3E3; display: flex; flex-direction: column; align-items: center;" >
-        <div class="flex justify-center w-full">
-            <button class="rounded-lg bg-[#5A3E94] hover:bg-blue-500 py-2 px-4 my-2 font-semibold text-white" 
-                onclick="navigateToMarkAttendance()">
-                Mark Attendance
-            </button>
-        </div>
-        <div class="rounded-xl shadow-2xl shadow-[#5A3E94]/50 p-2 my-2 w-1/4 border-2 border-[#5A3E94] bg-[aliceblue] flex flex-col justify-between items-center">
+        <div class="rounded-xl shadow-2xl shadow-[#5A3E94]/50 p-2 my-2 w-1/3 border-2 border-[#5A3E94] bg-[aliceblue] flex flex-col justify-between items-center">
             <div class="font-extrabold font-sans-serif font-stretch-extra-expanded tracking-wider">VIEW ATTENDANCE</div>
-            <div class="flex justify-center gap-4">
-                <label class="font-semibold" for="attendance-date">Select Date:</label>
-                <input class="bg-[#D6CCCC] p-2 font-semibold border-solid rounded-xl border-black" type="date" id="attendance-date">
+            <div class="flex justify-center gap-6">
+                <div class="gap-1 flex">
+                    <label class="font-semibold" for="attendance-date">Select Date:</label>
+                    <input class="bg-[#D6CCCC] p-2 font-semibold border-solid rounded-xl border-black" type="date" id="attendance-date">
+                </div>
+                <div class="gap-2 flex">
+                    <label class="font-semibold" for="roll-no">Roll No.</label>
+                    <input class="bg-[#D6CCCC] p-2 font-semibold border-solid rounded-xl border-black" type="number" id="roll-no">
+                </div>
             </div>
             <div>
                 <button class="bg-blue-500 hover:bg-red-500 py-2 px-4 my-2 rounded-lg font-semibold" onclick="fetchAttendance()">Fetch Attendance</button>
@@ -64,6 +64,6 @@
             </ul>
         </div>
     </div>
-    <script  type="module"  src="./js/view-attendance.js"></script>
+    <script  type="module"  src="./js/student-view-attendance.js"></script>
 
 </body>

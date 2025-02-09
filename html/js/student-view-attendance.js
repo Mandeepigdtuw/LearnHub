@@ -1,6 +1,6 @@
 // Import Firebase SDKs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
-import { getFirestore, getDoc, getDocs, setDoc, doc, collection } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+import { getFirestore, getDoc, doc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 
 // Firebase Configuration
 const firebaseConfig = {
@@ -17,47 +17,47 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-function navigateToMarkAttendance() {
-    window.location.href = "teacher-attendance-dashboard.html";
-}
-window.navigateToMarkAttendance = navigateToMarkAttendance;
-
-
 // Select the necessary DOM elements
 const attendanceDateInput = document.getElementById("attendance-date");
+const rollNoInput = document.getElementById("roll-no");
 const attendanceList = document.getElementById("attendance-list");
 
 async function fetchAttendance() {
-    const date = attendanceDateInput.value;
-    if (!date) {
-        alert("Please select a date");
+    const date = attendanceDateInput.value.trim();
+    const rollNo = rollNoInput.value.trim();
+
+    if (!date || !rollNo) {
+        alert("Please select both a date and roll number");
         return;
     }
 
     attendanceList.innerHTML = ""; // Clear previous data
 
     try {
+        // Fetch the attendance document for the given date
         const docRef = doc(db, "attendance", date);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
             const attendanceData = docSnap.data();
-            attendanceList.innerHTML = ""; // Clear previous results
 
-            for (const rollno in attendanceData) {
-                const student = attendanceData[rollno];
+            // Check if the specific roll number exists in the data
+            if (attendanceData[rollNo]) {
+                const student = attendanceData[rollNo];
                 const listItem = document.createElement("li");
                 listItem.textContent = `Name: ${student.name} | Roll No: ${student.rollno} | Status: ${student.status}`;
-                listItem.classList.add("bg-white", "p-4", "rounded-2xl", "shadow-lg", "flex", "items-center", "justify-between", "h-15", "px-4", "gap-4", "my-2" , "font-bold");
+                listItem.classList.add("bg-white", "p-4", "rounded-2xl", "shadow-lg", "flex", "items-center", "justify-between", "h-15", "px-4", "gap-4", "my-2", "font-bold");
                 attendanceList.appendChild(listItem);
+            } else {
+                attendanceList.innerHTML = `<p>No attendance record found for Roll No: ${rollNo} on ${date}</p>`;
             }
         } else {
-            attendanceList.innerHTML = "<p>No attendance data found for the selected date</p>";
+            attendanceList.innerHTML = `<p>No attendance data found for ${date}</p>`;
         }
     } catch (error) {
         console.error("Error fetching attendance:", error);
     }
 }
 
-
+// Expose function globally
 window.fetchAttendance = fetchAttendance;

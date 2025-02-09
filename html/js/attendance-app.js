@@ -21,8 +21,9 @@ const studentsList = document.getElementById("students-list");
 const attendanceForm = document.getElementById("attendance-form");
 
 function navigateToViewAttendance() {
-    window.location.href = "view-attendance.html";
+    window.location.href = "teacher-view-attendance.html";
 }
+window.navigateToViewAttendance = navigateToViewAttendance;
 
 // Fetch student data and create the attendance form
 async function fetchStudents() {
@@ -36,10 +37,10 @@ async function fetchStudents() {
                 <p>Name: ${student.Name}  |  Roll No: ${student.RollNo}</p>
                 <div>
                     <label>
-                        <input type="radio" name="attendance-${student.RollNo}" value="present" /> Present
+                        <input type="radio" name="attendance-${student.RollNo}" value="PRESENT" /> Present
                     </label>
                     <label>
-                        <input type="radio" name="attendance-${student.RollNo}" value="absent" /> Absent
+                        <input type="radio" name="attendance-${student.RollNo}" value="ABSENT" /> Absent
                     </label>
                 </div>
             `;
